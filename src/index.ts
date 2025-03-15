@@ -6,15 +6,13 @@ import * as path from 'path' // 使用 path.posix
 async function run(): Promise<void> {
   try {
     const REGION = core.getInput('region', { required: true });
-    console.log(`Region Input: ${REGION}`);
-
-    const ACCESS_KEY_ID = core.getInput('access-key-id')
-    const ACCESS_KEY_SECRET = core.getInput('access-key-secret')
-    const BUCKET = core.getInput('bucket')
+    const ACCESS_KEY_ID = core.getInput('access-key-id', { required: true })
+    const ACCESS_KEY_SECRET = core.getInput('access-key-secret', { required: true })
+    const BUCKET = core.getInput('bucket', { required: true })
     const SECURE = core.getInput('secure')
-    const LOCAL_FOLDER = core.getInput('local-folder')
+    const LOCAL_FOLDER = core.getInput('local-folder', { required: true })
     const FILE_PATTERN = core.getInput('file-pattern') || '*'
-    const REMOTE_DIR: string = core.getInput('remote-dir')
+    const REMOTE_DIR: string = core.getInput('remote-dir', { required: true })
     
     const client = new AliyunOSS({
       region: REGION,
@@ -47,9 +45,12 @@ async function run(): Promise<void> {
     }
 
     const maxConcurrency = 10
-    const files: string[] = glob.sync(`${folder}/${FILE_PATTERN}`, {
-      nodir: true
-    })
+    // --- ADDED LOGGING HERE ---
+    console.log(`Local folder: ${folder}`);
+    console.log(`File pattern: ${FILE_PATTERN}`);
+    const files: string[] = glob.sync(`${folder}/${FILE_PATTERN}`, { nodir: true });
+    console.log(`Found files: ${JSON.stringify(files, null, 2)}`); // Log the found files
+    // --- END ADDED LOGGING ---
 
     // 使用 Promise.allSettled 避免一个文件上传失败导致整个进程失败
     const results = await Promise.allSettled(
