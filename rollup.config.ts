@@ -7,10 +7,10 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 import json from '@rollup/plugin-json'
 
 export default {
-  input: 'src/main.ts',
+  input: 'src/index.ts',
   output: {
     file: 'dist/index.js',
-    format: 'cjs',
+    format: 'module',
     sourcemap: false
   },
   plugins: [
@@ -21,6 +21,5 @@ export default {
     }),
     commonjs(),
     json()
-  ],
-  external: ['ali-oss']
+  ]
 }
