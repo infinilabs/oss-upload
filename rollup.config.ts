@@ -12,7 +12,8 @@ const config = {
     format: 'es',
     sourcemap: true
   },
-  plugins: [typescript(), nodeResolve({ preferBuiltins: true }), commonjs()]
+  plugins: [typescript(), nodeResolve({ preferBuiltins: true }), commonjs()],
+  external: ['ali-oss']
 }
 
 export default config

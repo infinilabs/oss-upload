@@ -1,24 +1,38 @@
-name: The name of your action here
-description: Provide a description here
-author: Your name or organization here
-
-# Add your action's branding here. This will appear on the GitHub Marketplace.
-branding:
-  icon: heart
-  color: red
-
-# Define your inputs here.
+name: 'OSS Upload'
+description: 'Upload files to Aliyun OSS'
+author: 'hardy'
 inputs:
-  milliseconds:
-    description: Your input description here
+  region:
     required: true
-    default: '1000'
-
-# Define your outputs here.
-outputs:
-  time:
-    description: Your output description here
-
+    description: the bucket data region location
+  access-key-id:
+    required: true
+    description: access key
+  access-key-secret:
+    required: true
+    description: access secret
+  bucket:
+    required: true
+    description: bucket
+  secure:
+    required: true
+    description: access secret
+    default: 'true'
+  local-folder:
+    required: true
+    description: local-folder
+    default: dist
+  file-pattern:
+    required: false
+    description: 'File pattern to filter files (e.g., *.zip, *.tar.gz)'
+    default: '*'
+  remote-dir:
+    required: true
+    description: remote-dir
+    default: /
 runs:
-  using: node20
+  using: node16
   main: dist/index.js
+branding:
+  icon: upload-cloud
+  color: green
