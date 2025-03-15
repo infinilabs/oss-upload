@@ -35,9 +35,10 @@ runs:
   steps:
     - id: install-deps
       shell: bash
-      run: node -v && npm install ali-oss
-    - shell: node
-      run: ${{ github.action_path }}/dist/index.js
+      run: npm install ali-oss
+
+    - shell: bash
+      run: node ${{ github.action_path }}/dist/index.js
 branding:
   icon: upload-cloud
   color: green
