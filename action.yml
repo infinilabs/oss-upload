@@ -34,8 +34,10 @@ runs:
   using: 'composite'
   steps:
     - id: install-deps
+      shell: bash
       run: npm install ali-oss
     - id: run
+      shell: bash
       run: ${{ github.action_path }}/dist/index.js
 branding:
   icon: upload-cloud
