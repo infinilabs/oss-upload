@@ -5,15 +5,17 @@ import * as path from 'path' // 使用 path.posix
 
 async function run(): Promise<void> {
   try {
-    const REGION = core.getInput('region')
+    const REGION = core.getInput('region', { required: true });
+    console.log(`Region Input: ${REGION}`);
+
     const ACCESS_KEY_ID = core.getInput('access-key-id')
     const ACCESS_KEY_SECRET = core.getInput('access-key-secret')
     const BUCKET = core.getInput('bucket')
     const SECURE = core.getInput('secure')
     const LOCAL_FOLDER = core.getInput('local-folder')
-    const REMOTE_DIR: string = core.getInput('remote-dir')
     const FILE_PATTERN = core.getInput('file-pattern') || '*'
-
+    const REMOTE_DIR: string = core.getInput('remote-dir')
+    
     const client = new AliyunOSS({
       region: REGION,
       accessKeyId: ACCESS_KEY_ID,
