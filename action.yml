@@ -37,8 +37,8 @@ runs:
       shell: bash
       run: npm install ali-oss
     - id: run
-      shell: bash
-      run: ${{ github.action_path }}/dist/index.js
+      using: node20
+      main: dist/index.js
 branding:
   icon: upload-cloud
   color: green
