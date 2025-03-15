@@ -72,14 +72,13 @@ async function repackFiles(
         const newSuffix = path.basename(newSuffixWithExt, ext)
 
         const originalPrefixRegex = /^(.*?)[-_]*\d+\.\d+\.\d+.*[-_]/
-        let prefixMatch = fileNameWithoutExt.match(originalPrefixRegex)
-        let originalPrefix = prefixMatch
+        const prefixMatch = fileNameWithoutExt.match(originalPrefixRegex)
+        const originalPrefix = prefixMatch
           ? prefixMatch[1]
-          : fileNameWithoutExt.split('_')[0] + '_'
-        originalPrefix = originalPrefix.replace(/_/g, '-')
+          : fileNameWithoutExt.split('_')[0]
 
         // Construct the *complete* new base name:  prefix + version + suffix
-        const newBaseName = `${originalPrefix}${major}.${minor}.${patch}${suffix ? `-${suffix}` : ''}-${newSuffix}`
+        const newBaseName = `${originalPrefix}-${major}.${minor}.${patch}${suffix ? `-${suffix}` : ''}-${newSuffix}`
         const newNameWithExt = `${newBaseName}${ext}`
         const newFilePath = path.join(path.dirname(oldFilePath), newNameWithExt)
 
