@@ -3,7 +3,6 @@
   "description": "GitHub Actions TypeScript template",
   "version": "0.0.0",
   "author": "",
-  "type": "module",
   "private": true,
   "homepage": "https://github.com/actions/typescript-action",
   "repository": {
@@ -46,6 +45,7 @@
     "@github/local-action": "^3.1.0",
     "@jest/globals": "^29.7.0",
     "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/ali-oss": "^6.16.11",

@@ -3,7 +3,7 @@ import AliyunOSS from 'ali-oss'
 import { glob } from 'glob'
 import * as path from 'path' // 使用 path.posix
 
-export async function run(): Promise<void> {
+async function run(): Promise<void> {
   try {
     const REGION = core.getInput('region')
     const ACCESS_KEY_ID = core.getInput('access-key-id')
@@ -101,3 +101,4 @@ export async function run(): Promise<void> {
     }
   }
 }
+run()
