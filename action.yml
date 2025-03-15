@@ -28,7 +28,9 @@ inputs:
     default: '*'
   repack-version:
     required: false
-    description: 'Repack and zip files using this version (format: x.y.z-w). Omit to skip repacking.'
+    description:
+      'Repack and zip files using this version (format: x.y.z-w). Omit to skip
+      repacking.'
   remote-dir:
     required: true
     description: remote-dir
