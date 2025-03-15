@@ -24,9 +24,6 @@ async function run(): Promise<void> {
 
     // 规范化 local-folder
     let folder = LOCAL_FOLDER
-    while (folder.startsWith('/')) {
-      folder = folder.slice(1)
-    }
     while (folder.endsWith('/')) {
       folder = folder.slice(0, folder.length - 1)
     }
