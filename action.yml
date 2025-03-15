@@ -31,8 +31,12 @@ inputs:
     description: remote-dir
     default: /
 runs:
-  using: node16
-  main: dist/index.js
+  using: 'composite'
+  steps:
+    - id: install-deps
+      run: npm install ali-oss
+    - id: run
+      run: ${{ github.action_path }}/dist/index.js
 branding:
   icon: upload-cloud
   color: green
