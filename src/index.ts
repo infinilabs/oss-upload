@@ -45,10 +45,10 @@ async function repackFiles(
     'arm64-setup.exe': 'windows-arm64.exe',
     'x64.dmg': 'mac-amd64.dmg',
     'aarch64.dmg': 'mac-arm64.dmg',
-    'amd64.deb': 'linux-amd64-deb.deb',
-    'aarch64.deb': 'linux-arm64-deb.deb',
-    '-1.x86_64.rpm': 'linux-amd64-rpm.rpm',
-    '-1.aarch64.rpm': 'linux-arm64-rpm.rpm'
+    'amd64.deb': 'deb-linux-amd64.deb',
+    'aarch64.deb': 'deb-linux-arm64.deb',
+    '-1.x86_64.rpm': 'rpm-linux-amd64.rpm',
+    '-1.aarch64.rpm': 'rpm-linux-arm64.rpm'
   }
 
   const filesToRepack: string[] = glob.sync(`${folder}/${filePattern}`, {
