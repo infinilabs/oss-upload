@@ -134,7 +134,8 @@ async function run(): Promise<void> {
       accessKeyId: ACCESS_KEY_ID,
       accessKeySecret: ACCESS_KEY_SECRET,
       secure: /^\s*(true|1)\s*$/i.test(SECURE),
-      bucket: BUCKET
+      bucket: BUCKET,
+      timeout: 300000
     })
 
     let folder = LOCAL_FOLDER
@@ -188,7 +189,9 @@ async function run(): Promise<void> {
                   remoteDir,
                   path.basename(file)
                 )
-                await client.put(ossFilePath, file)
+                await client.put(ossFilePath, file, {
+                  timeout: 300000 
+                })
                 core.info(`Uploaded: ${file} to ${ossFilePath}`)
               } catch (error) {
                 if (error instanceof Error) {
