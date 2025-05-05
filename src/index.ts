@@ -46,7 +46,7 @@ async function repackFiles(
     'x64.dmg': 'mac-amd64.dmg',
     'aarch64.dmg': 'mac-arm64.dmg',
     'amd64.deb': 'deb-linux-amd64.deb',
-    'aarch64.deb': 'deb-linux-arm64.deb',
+    'arm64.deb': 'deb-linux-arm64.deb',
     '-1.x86_64.rpm': 'rpm-linux-amd64.rpm',
     '-1.aarch64.rpm': 'rpm-linux-arm64.rpm'
   }
